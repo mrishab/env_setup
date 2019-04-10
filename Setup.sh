@@ -3,6 +3,12 @@
 # THIS SCRIPT NEEDS TO BE RUN WITH -E flag and ROOT PRIVILEDGES
 
 # Constants
+
+## User Details
+
+NAME=""
+EMAIL=""
+
 ## Installation Path
 INSTALLATION_PATH="/opt"
 
@@ -163,8 +169,13 @@ echo "export PGPORT=\"5432\"" >> /etc/profile
 echo "export PGUSER=\"postgres\"" >> /etc/profile
 
 ## Git
-git config --global user.email "rishab.manocha@outlook.com"
-git config --global user.name "Rishab Manocha"
+git config --global user.email "$EMAIL"
+git config --global user.name "$NAME"
+
+### Setting up the SSH Key
+ssh-keygen -t rsa -b 4096 -C "$EMAIL" -N "" -f ~/.ssh/id_rsa
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_rsa
 
 # Creating Shortcut Icons
 ## Reading the variables to the Environment
