@@ -118,6 +118,7 @@ mv apache-tomcat-8.5.39 $INSTALLATION_PATH/
 
 ## NodeJS
 tar xf node-v10.15.3-linux-x64.tar.xz
+mv node-v10.15.3-linux-x64 $INSTALLATION_PATH/
 
 ## Virtual Box
 apt install -f ./virtualbox-6.0_6.0.4-128413~Ubuntu~bionic_amd64.deb -y
