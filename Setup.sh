@@ -92,7 +92,6 @@ mv idea-IC-183.5912.21/ $INSTALLATION_PATH/
 apt install -f ./jdk-11.0.2_linux-x64_bin.deb -y
 ### Installation Location: /usr/lib/jvm/jdk-11.0.2
 
-
 ## Python
 tar xf Python-3.7.2.tar.xz
 
@@ -128,6 +127,10 @@ apt install curl -y
 
 ## Git
 apt install git -y
+
+## VLC Media Player
+apt install snap -y
+snap install vlc
 
 ## LAMP
 apt install apache2 -y
