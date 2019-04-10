@@ -31,6 +31,18 @@ VIRTUAL_BOX="https://download.virtualbox.org/virtualbox/6.0.4/virtualbox-6.0_6.0
 ## Download Configurations
 JDK_HEADER="Cookie: oraclelicense=accept-securebackup-cookie"
 
+# Prereq Checks
+
+if [ -z "$NAME" ]
+then
+    echo "You forgot to set the value of the Name variable. Please set your Name in the script before running";
+    exit 1
+elif [ -z $EMAIL ]
+then
+    echo "You forgot to set the value of the Email variable. Please set your Email in the script before running";
+    exit 1
+fi
+
 # Changing the Directory to Downloads
 cd Downloads
 
