@@ -97,6 +97,7 @@ tar xf Python-3.7.2.tar.xz
 
 ## PyCharm
 tar xf pycharm-community-2018.3.5.tar.gz
+mv pycharm-community-2018.3.5 $INSTALLATION_PATH/
 
 ## FileZilla
 
