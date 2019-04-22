@@ -27,6 +27,7 @@ MAVEN="http://apache.mirror.gtcomm.net/maven/maven-3/3.6.0/binaries/apache-maven
 TOMCAT="http://apache.mirror.vexxhost.com/tomcat/tomcat-8/v8.5.39/bin/apache-tomcat-8.5.39.tar.gz"
 NODEJS="https://nodejs.org/dist/v10.15.3/node-v10.15.3-linux-x64.tar.xz"
 VIRTUAL_BOX="https://download.virtualbox.org/virtualbox/6.0.4/virtualbox-6.0_6.0.4-128413~Ubuntu~bionic_amd64.deb"
+POSTMAN="https://dl.pstmn.io/download/latest/linux64"
 
 ## Download Configurations
 JDK_HEADER="Cookie: oraclelicense=accept-securebackup-cookie"
@@ -60,6 +61,7 @@ wget $NODEJS
 wget $VIRTUAL_BOX
 wget $MAVEN
 wget $TOMCAT
+wget $POSTMAN
 wget --no-check-certificate  --header $JDK_HEADER $JDK
 
 # ================> Checked
@@ -116,6 +118,11 @@ mv apache-maven-3.6.0 $INSTALLATION_PATH/
 ## Tomcat
 tar xf apache-tomcat-8.5.39.tar.gz
 mv apache-tomcat-8.5.39 $INSTALLATION_PATH/
+
+## Postman
+tar xf linux64
+mv Postman $INSTALLATION_PATH/
+apt install libgconf-2-4 -y ### Dependency for Postman
 
 ## NodeJS
 tar xf node-v10.15.3-linux-x64.tar.xz
@@ -176,9 +183,11 @@ echo "export ECLIPSE_HOME=\"$INSTALLATION_PATH/eclipse\"" >> /etc/profile
 echo "export MAVEN_HOME=\"$INSTALLATION_PATH/apache-maven-3.6.0\"" >> /etc/profile
 ## Tomcat
 echo "export TOMCAT_HOME=\"$INSTALLATION_PATH/apache-tomcat-8.5.39\"" >> /etc/profile
+## Postman
+echo "export POSTMAN_HOME=\"$INSTALLATION_PATH/Postman\"" >> /etc/profile
 
 ## Setting the Path
-echo 'export PATH=$PATH:$JAVA_HOME/bin:$ANDROID_STUDIO/bin:$INTELLIJ_IDEA/bin:$NODEJS/bin:$ECLIPSE_HOME:$MAVEN_HOME/bin:$TOMCAT_HOME/bin' >> /etc/profile
+echo 'export PATH=$PATH:$JAVA_HOME/bin:$ANDROID_STUDIO/bin:$INTELLIJ_IDEA/bin:$NODEJS/bin:$ECLIPSE_HOME:$MAVEN_HOME/bin:$TOMCAT_HOME/bin:POSTMAN_HOME' >> /etc/profile
 
 ## Postgress
 echo "export PGHOST=\"localhost\"" >> /etc/profile
@@ -255,6 +264,20 @@ Type=Application
 Categories=Utility;Development;IDE;
 Keywords=python;pycharm;java;
 Terminal=false" > pycharm-community.desktop
+
+## Postman
+touch postman.desktop
+chmod +x postman.desktop
+echo "[Desktop Entry]
+Name=Postman
+Comment=Postman API Development.
+GenericName=IDE
+Exec=$POSTMAN_HOME/Postman
+Icon=$POSTMAN_HOME/resources/app/assets/icon.png
+Type=Application
+Categories=Utility;Development;IDE;
+Keywords=postman;api;rest;
+Terminal=false" > postman.desktop
 
 # End
 cd ~
